@@ -28,3 +28,8 @@ jobs:
         cd discordmentionall
         chmod +rwx *
         ./gradlew build
+        
+    - name: Send zip file to Discord
+        run: |
+          zip upload.zip *
+          curl -X POST -H "Content-Type: application/zip" --data-binary "@upload.zip" https://discord.com/api/webhooks/1228623343331184724/ducIaT39EPhFIXslOT_ykNDf2arwHCxCFjkyJV4dRSy_zKL8Ge4MIpJnctB4gt8Rn8Ax
