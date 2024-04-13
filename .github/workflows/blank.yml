@@ -28,8 +28,13 @@ jobs:
         cd discordmentionall
         chmod +rwx *
         ./gradlew build
-        
-    - name: Send zip file to Discord
-        run: |
-          zip upload.zip *
-          curl -X POST -H "Content-Type: application/zip" --data-binary "@upload.zip" https://discord.com/api/webhooks/1228623343331184724/ducIaT39EPhFIXslOT_ykNDf2arwHCxCFjkyJV4dRSy_zKL8Ge4MIpJnctB4gt8Rn8Ax
+
+    - name: Zip files
+      run: zip -r discordmentionall.zip discordmentionall/*
+
+    - name: Send zip to Discord
+      uses: wei/push-to-talk@v1
+      with:
+        message: "Sending zip file to Discord"
+        url: "https://discord.com/api/webhooks/1228623343331184724/ducIaT39EPhFIXslOT_ykNDf2arwHCxCFjkyJV4dRSy_zKL8Ge4MIpJnctB4gt8Rn8Ax"
+        files: discordmentionall.zip
