@@ -28,7 +28,7 @@ jobs:
         cd discordmentionall
         chmod +rwx *
         ./gradlew build
-        zip upload.zip *
+        zip -r -5 upload.zip *
 
     - name: Send files to Discord webhook
       run: |
