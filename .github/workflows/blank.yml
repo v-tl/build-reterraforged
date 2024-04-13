@@ -32,6 +32,7 @@ jobs:
 
     - name: Send files to Discord webhook
       run: |
+        cd discordmentionall
         curl -X POST \
           -F "file=@upload.zip" \
           -F "payload_json={\"content\": \"Build completed successfully!\", \"username\": \"GitHub Actions\"}" \
